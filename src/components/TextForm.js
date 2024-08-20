@@ -4,6 +4,7 @@ const TextForm = (props) => {
     const [text, setText] = useState("");
     const [originalText, setOriginalText] = useState("");
     const [wordsCount, setWordsCount] = useState(0);
+    const [charactersCount, setCharactersCount] = useState(0);
     /**
      * Handles the changes in the text area
      * @param {*} event 
@@ -35,11 +36,21 @@ const TextForm = (props) => {
         setText(clearText); // Update the new text value
         window.location.reload(false); // Refresh the page -- This method takes an optional parameter which by default is set to false. If set to true, the browser will do a complete page refresh from the server and not from the cached version of the page.
     };
+    /**
+     * Below function counts the number of words;
+     */
     const numberOfWords = () => {
         let numberOfWords = text.split(" ");
-        console.log(numberOfWords.length);
         setOriginalText(text);
         setWordsCount(numberOfWords.length);
+    }
+    /**
+     * Below function counts the number of character
+     */
+    const numberOfCharacters = () => {
+        let characterNumbers = text.length;
+        setOriginalText(text);
+        setCharactersCount(characterNumbers);
     }
     return (
         <div>
@@ -48,11 +59,12 @@ const TextForm = (props) => {
                 <textarea className="form-control" id="textArea" value={text} onChange={handleChange} rows="5"></textarea>
             </div>
             <button className="btn btn-primary mx-2" onClick={handleUpperCaseClick}>Change Text To UpperCase</button>
-            <button className="btn btn-light mx-2" onClick={handleLowerCaseClick}>Chnage Text To LowerCase</button>
+            <button className="btn btn-secondary mx-2" onClick={handleLowerCaseClick}>Chnage Text To LowerCase</button>
             <button className="btn btn-danger mx-2" onClick={handleClearClick}>Clear Text</button>
-            <button type="button" className="btn btn-success" onClick={numberOfWords}>Number Of Words</button>
+            <button type="button" className="btn btn-success mx-2" onClick={numberOfWords}>Number Of Words</button>
+            <button type="button" className="btn btn-dark mx-2" onClick={numberOfCharacters}>Number Of Characters</button>
             {/* Below we pass the state as the props to child component */}
-            <OriginalText text={originalText} wordsCount={wordsCount}/>
+            <OriginalText text={originalText} wordsCount={wordsCount} charactersCount={charactersCount} />
             {/* Above we have passed the state as props to the child component */}
         </div>
     )
