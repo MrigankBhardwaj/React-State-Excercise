@@ -6,8 +6,8 @@ const OriginalText = (props) => {
     let charactersCountText = props.charactersCount ? <>Total number of characters are - <strong>{props.charactersCount}</strong></> : "";
     return (
         <div className="container mb-3">
-            <p>{originalText}</p>
-            <p>{wordsCountText}</p>
+            <p> {originalText}</p>
+            <p>   {wordsCountText}</p>
             <p>{charactersCountText}</p>
         </div>
     )

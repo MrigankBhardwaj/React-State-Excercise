@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import OriginalText from "./OriginalText";
+import "../style.css";
 const TextForm = (props) => {
     const [text, setText] = useState("");
     const [originalText, setOriginalText] = useState("");
     const [wordsCount, setWordsCount] = useState(0);
     const [charactersCount, setCharactersCount] = useState(0);
+    const [jsonText, setJsonText] = useState("");
     /**
      * Handles the changes in the text area
      * @param {*} event 
@@ -52,6 +54,28 @@ const TextForm = (props) => {
         setOriginalText(text);
         setCharactersCount(characterNumbers);
     }
+    /**
+     * Below function clears the extra spaces that you have given
+     */
+    const clearExtraSpaces = () => {
+        let newText = text.split(/[ ]+/);
+        console.log(newText);
+        setText(newText.join(" "));
+    }
+    /**
+     * Below function copy the text present in the text area
+     */
+    const copyText = () => {
+        let newText =  document.getElementById("textArea");
+        newText.select();
+        navigator.clipboard.writeText(newText.value);
+    }
+    const formatJson = () => {
+        let jsonTextUp = JSON.parse(text)
+        const prettyJson = JSON.stringify(jsonTextUp, null, 2);
+        console.log(jsonTextUp);
+        setJsonText(prettyJson);
+    }
     return (
         <div>
             <div className="mb-3">
@@ -63,9 +87,13 @@ const TextForm = (props) => {
             <button className="btn btn-danger mx-2" onClick={handleClearClick}>Clear Text</button>
             <button type="button" className="btn btn-success mx-2" onClick={numberOfWords}>Number Of Words</button>
             <button type="button" className="btn btn-dark mx-2" onClick={numberOfCharacters}>Number Of Characters</button>
+            <button type="button" className="btn btn-warning mx-2" onClick={clearExtraSpaces}>Clear Extra Spaces</button>
+            <button type="button" className="btn btn-success mx-2" onClick={copyText}>Copy Text</button>
+            <button type="button" className="btn btn-success mx-2" onClick={formatJson}>Formate JSON</button>
             {/* Below we pass the state as the props to child component */}
             <OriginalText text={originalText} wordsCount={wordsCount} charactersCount={charactersCount} />
             {/* Above we have passed the state as props to the child component */}
+            <textarea rows={10} className="form-control json-output" id="jsonData" value={jsonText} readOnly></textarea>
         </div>
     )
 }

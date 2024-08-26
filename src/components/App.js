@@ -8,7 +8,6 @@ function App() {
             <div>
                 <TextForm heading={"Enter your text below"} />
             </div>
-
         </div>
     )
 }
