@@ -3,11 +3,11 @@ function Navbar() {
     return (
         <div>
             <ul className="nav justify-content-center">
-                <li className="nav-item">
-                    <a className="nav-link active" href="/simple-counter">Counter</a>
+            <li className="nav-item">
+                    <a className="nav-link active" href="/">Home</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link active" href="/">Home</a>
+                    <a className="nav-link active" href="/simple-counter">Counter</a>
                 </li>
             </ul>
         </div>
