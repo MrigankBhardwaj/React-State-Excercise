@@ -9,6 +9,9 @@ function Navbar() {
                 <li className="nav-item">
                     <a className="nav-link active" href="/simple-counter">Counter</a>
                 </li>
+                <li className="nav-item">
+                    <a className="nav-link active" href="/text-to-speech">Text To Speech</a>
+                </li>
             </ul>
         </div>
     )

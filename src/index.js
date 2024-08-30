@@ -5,6 +5,7 @@ import App from "./components/App";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import SimpleCounter from './components/SimpleCounter';
 import Navbar from './components/Navbar';
+import TextToSpeech from './components/TextToSpeech';
 
 const root = document.getElementById('root');
 const createRot = ReactDOM.createRoot(root);
@@ -14,6 +15,10 @@ function MainFile() {
     {
       path: "/simple-counter",
       element: <SimpleCounter />
+    },
+    {
+      path: "/text-to-speech",
+      element: <TextToSpeech />
     },
     {
       path: "/",
